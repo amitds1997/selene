@@ -1,10 +1,27 @@
-To integrate selene with git, you can use [pre-commit](https://pre-commit.com). Once you have [pre-commit installed](https://pre-commit.com/#install), add this to the `.pre-commit-config.yaml` at root of your repository:
+# Pre-commit
+
+`pre-commit` can be used to automatically run selene using git hooks. Once you have [pre-commit installed](https://pre-commit.com/#install), add one of the following configuration to your `.pre-commit-config.yaml` file:
+
+1. If you want to use the `selene` binary available on your system path
 ```yaml
 repos:
   - repo: https://github.com/Kampfkarren/selene
-    rev: '' # Change this value to use a different version of Selene
+    rev: ''
     hooks:
-      - id: selene-system # Use the selene binary already present on system path
-      - id: selene-docker # To use docker to run the hook, needs docker to be present
+      - id: selene-system
 ```
-You need to mention only one of the two hooks ids depending upon if you already have the binary available or not on your system path.
+2. If you want to use `selene` using the available docker image
+```yaml
+repos:
+  - repo: https://github.com/Kampfkarren/selene
+    rev: ''
+    hooks:
+      - id: selene-docker
+```
+3. If you want to use `selene` using the GitHub releases
+```yaml
+repos:
+  - repo: https://github.com/Kampfkarren/selene
+    hooks:
+      - id: selene-github
+```
