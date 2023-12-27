@@ -13,3 +13,11 @@
   language: docker
   types:
       - lua
+
+- id: selene-github
+  name: selene (GitHub)
+  description: An opinionated Lua code linter
+  entry: selene
+  language: python
+  types:
+      - lua
